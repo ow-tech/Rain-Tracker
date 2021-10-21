@@ -7,6 +7,5 @@ class DataSerializer(serializers.ModelSerializer):
     class Meta:
         model = Data
         fields = (
-            "title",
-            "content"
+            '__all__'
         )

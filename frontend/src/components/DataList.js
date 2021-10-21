@@ -1,6 +1,7 @@
 import React,{ useEffect, useState} from 'react'
 
 import { Layout, Menu, Breadcrumb } from 'antd';
+import Chart from './Chart';
 
 const { Header, Content, Footer } = Layout;
 
@@ -8,22 +9,29 @@ const DataList = () => {
     const [data,setData] = useState(null)
     const [loading,setLoading] = useState(false)
     const [error,setError] = useState(null)
+    const [currentSevendaysData, setCurrentSevenDaysData] = useState([])
 
     useEffect(() => {
         setLoading(true)
         fetch('http://127.0.0.1:8000/api/home/')
         .then(res => res.json())
         .then(data =>{
-            console.log(data)
+            // console.log(data)
             setData(data)
-            setLoading(false)
+            let newl = data.slice(-7)
+            console.log(newl)
+            let pre =data.slice(-14, -7)
+            console.log(pre)
+            setLoading(false) 
         })
         .catch(error => {
             setError(error.message)
             setLoading(false)
         })
-
+        // let mylist = ['ann', 'luo', 'kamba', 'liz', 'alex', 'ken']
+      
     },[])
+  
 
 
     return (
@@ -46,18 +54,11 @@ const DataList = () => {
           <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
             
           {loading? <div>Loading...</div> : (
-                <div>
-
-                   
-                    {data && data.map(demo => {
-                        return(
-                            <div>
-                                <h1>{demo.title}</h1>
-                                <p>{demo.content}</p>
-                            </div>
-                        )
-                    })
-                    }
+              
+                <div style={{ }}>
+                    <Chart
+                    data={data}
+                    />
                 </div>)
         }    
             
