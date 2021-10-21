@@ -1,5 +1,9 @@
 import React,{ useEffect, useState} from 'react'
 
+import { Layout, Menu, Breadcrumb } from 'antd';
+
+const { Header, Content, Footer } = Layout;
+
 const DataList = () => {
     const [data,setData] = useState(null)
     const [loading,setLoading] = useState(false)
@@ -23,13 +27,28 @@ const DataList = () => {
 
 
     return (
-        <div style={{margin:10 , padding:10}}> 
-            <h1>Demo List</h1>
-            {error && (
-                <h4 style={{ padding:5 , color:"red"}}>An error has occured:{error}</h4>
-            )}
-            {loading? <div>Loading...</div> : (
+        <Layout>
+        <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+          <div style = {{float:'left',width: '120px',
+  height: '31px', margin: '16px 24px 16px 0',backgroundColor:'rgba(255, 255, 255, 0.2)'}}className="logo" />
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+            <Menu.Item key="1">nav 1</Menu.Item>
+            <Menu.Item key="2">nav 2</Menu.Item>
+            <Menu.Item key="3">nav 3</Menu.Item>
+          </Menu>
+        </Header>
+        <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
+          <Breadcrumb style={{ margin: '16px 0' }}>
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
+            
+          {loading? <div>Loading...</div> : (
                 <div>
+
+                   
                     {data && data.map(demo => {
                         return(
                             <div>
@@ -38,13 +57,16 @@ const DataList = () => {
                             </div>
                         )
                     })
-                       
                     }
-                </div>
-            )}
-           
-        </div>
+                </div>)
+        }    
+            
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>Rain Tracker ©2021 Created By Upande</Footer>
+      </Layout>
     )
 }
+
 
 export default DataList
