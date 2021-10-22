@@ -1,6 +1,5 @@
 from django.db import models
-from django.utils import timezone
-from datetime import datetime, date
+from datetime import date
 DAYS = (
     ("1", "Sun"),
     ("2", "Mon"),

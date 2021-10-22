@@ -4,9 +4,6 @@ import { Form, Input, Button, Select} from 'antd';
 const AntdForm = (params) => {
 
   const [formValues, setFormValues] = useState()
-  // const [week, setWeek] = useState()
-  // const [day, setDay] = useState('')
-  // const [rainData, setRainData] = useState()
   const [error,setError] = useState(null)
   
 
@@ -15,6 +12,7 @@ const AntdForm = (params) => {
     setFormValues(values)
     params.upStreamValues(values)
     postBackend(values)
+    params.forceUpdate()
   };
   console.log(formValues)
 
@@ -23,7 +21,7 @@ const AntdForm = (params) => {
   };
   const { Option } = Select;
 
-  // post data
+  // post rain data to endpoint
 
   const postBackend = (formValues)=>{
     if(formValues){

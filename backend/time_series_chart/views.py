@@ -7,12 +7,14 @@ from rest_framework.status import (
     HTTP_201_CREATED,
     HTTP_400_BAD_REQUEST)
 
-
+# class based view for ploting the time series chart
 class DataListView(generics.ListAPIView):
     permission_classes =[permissions.AllowAny]
     queryset = Data.objects.all()
     serializer_class = DataSerializer
-
+    
+    
+# class based view for handling post of rain data
 class CreateDataView(generics.CreateAPIView):
     serializer_class = CreateRainDataSerializer
     
@@ -24,18 +26,3 @@ class CreateDataView(generics.CreateAPIView):
         if data:
             return Response(status = HTTP_201_CREATED)
         return Response(status=HTTP_400_BAD_REQUEST)
-    
-    # def post(self, request, format=None):
-    #     serializer = self.serializer_class(data=request.data)
-    #     if serializer.is_valid():
-    #         data = Data()
-    #         data.week = serializer.data.get('week')
-    #         data.day = serializer.data.get('day')
-    #         data.rainData = serializer.data.get('rainData')
-            
-    #         # data.week = week
-    #         # data.day = day
-    #         # data.rainData = rainData
-    #         # print('data all captured')
-    #         data.save()
-    #     return Response(DataSerializer(Data).data, status=status)
