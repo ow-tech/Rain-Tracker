@@ -16,7 +16,7 @@ const Chart = params => {
             setPreviousSevenDays(beforeSevenDays)
         }
 
-    } )
+    },[])
 
     const rainData =
     {
