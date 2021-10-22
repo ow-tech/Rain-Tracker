@@ -36,9 +36,9 @@ const DataList = () => {
           <div style = {{float:'left',width: '120px',
   height: '31px', margin: '16px 24px 16px 0',backgroundColor:'rgba(255, 255, 255, 0.2)'}}className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
+            <Menu.Item key="1">Home</Menu.Item>
+            <Menu.Item key="2">Chart</Menu.Item>
+            <Menu.Item key="3">Prediction</Menu.Item>
           </Menu>
         </Header>
         <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
