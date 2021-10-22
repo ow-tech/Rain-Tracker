@@ -9,7 +9,7 @@ const DataList = () => {
     const [data,setData] = useState(null)
     const [loading,setLoading] = useState(false)
     const [error,setError] = useState(null)
-    const [currentSevendaysData, setCurrentSevenDaysData] = useState([])
+  
 
     useEffect(() => {
         setLoading(true)
@@ -18,10 +18,6 @@ const DataList = () => {
         .then(data =>{
             // console.log(data)
             setData(data)
-            let newl = data.slice(-7)
-            console.log(newl)
-            let pre =data.slice(-14, -7)
-            console.log(pre)
             setLoading(false) 
         })
         .catch(error => {
@@ -57,6 +53,7 @@ const DataList = () => {
               
                 <div style={{ }}>
                     <Chart
+                    loading = {loading}
                     data={data}
                     />
                 </div>)
